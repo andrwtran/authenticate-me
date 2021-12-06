@@ -1,0 +1,13 @@
+ul {
+  display: flex;
+  list-style-type: none;
+}
+
+button {
+  margin: 5px;
+}
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+}

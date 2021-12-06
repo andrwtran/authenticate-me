@@ -4,13 +4,6 @@ const apiRouter = require('./api');
 
 router.use('/api', apiRouter);
 
-// *Test Routes*
-
-router.get('/hello/world', function(req, res) {
-  res.cookie('XSRF-TOKEN', req.csrfToken());
-  res.send('Hello World!');
-});
-
 // *Static routes*
 
 // Serve React build files in production

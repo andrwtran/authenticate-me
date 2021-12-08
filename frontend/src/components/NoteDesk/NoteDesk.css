@@ -1,0 +1,14 @@
+.notedesk {
+  align-self: center;
+  position: relative;
+  left: 350px;
+}
+
+.notetext {
+  border: none;
+}
+
+textarea {
+  min-height: 500px;
+  min-width: 800px;
+}

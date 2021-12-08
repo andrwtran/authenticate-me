@@ -5,6 +5,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import BookShelf from "./components/BookShelf";
+import NoteDesk from "./components/NoteDesk";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +18,10 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <div className='container'>
+        <BookShelf />
+        <NoteDesk />
+      </div>
       {isLoaded && (
         <Switch>
           <Route path="/login">

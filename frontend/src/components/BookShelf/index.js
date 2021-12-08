@@ -1,18 +1,28 @@
 import React from "react";
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getBooks } from '../../store/book';
 import './BookShelf.css';
 
 function BookShelf() {
   const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
+  const booksObj = useSelector((state) => state.book.entries);
+  const books = Object.values(booksObj);
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
 
   if (sessionUser) {
     return (
       <div>
         <h2>BOOKS</h2>
         <ul>
-          <li>Book 1</li>
-          <li>Book 2</li>
-          <li>Book 3</li>
+          {books.map(({book_name}) => (
+            <li>{book_name}</li>
+          ) )}
         </ul>
         <h3>NOTES</h3>
         <ul>

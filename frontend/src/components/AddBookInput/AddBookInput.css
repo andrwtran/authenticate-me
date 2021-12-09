@@ -1,0 +1,12 @@
+.addBookInputBox {
+  display: flex;
+  justify-content: center;
+}
+
+.addBookInputBox > form {
+  border: none;
+}
+
+.addBookInputBox input {
+  max-width: 90px;
+}

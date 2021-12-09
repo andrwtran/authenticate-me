@@ -15,7 +15,7 @@ function NoteList() {
 
   useEffect(() => {
     dispatch(getNotes(bookId));
-  }, [bookId]);
+  }, [dispatch, bookId]);
 
   return (
     <div>

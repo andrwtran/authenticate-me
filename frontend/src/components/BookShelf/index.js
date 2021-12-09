@@ -1,10 +1,11 @@
 import React from "react";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getBooks } from '../../store/book';
 import { Route, NavLink } from 'react-router-dom';
 import AddBookInput from "../AddBookInput";
 import NoteList from "../NoteList";
+import DeleteBookButton from "../DeleteBookButton";
 import './BookShelf.css';
 
 function BookShelf() {
@@ -16,7 +17,7 @@ function BookShelf() {
 
   useEffect(() => {
     dispatch(getBooks());
-  }, [dispatch]);
+  }, [booksObj]);
 
   if (sessionUser) {
     return (
@@ -28,6 +29,7 @@ function BookShelf() {
             <li key={id}>
               <i className="fas fa-book" />
               <NavLink to={`/books/${id}`}>{book_name}</NavLink>
+              <DeleteBookButton bookId={id}/>
             </li>
           ))}
         </ul>

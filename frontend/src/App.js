@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -10,7 +10,7 @@ import NoteDesk from "./components/NoteDesk";
 
 function App() {
   const dispatch = useDispatch();
-
+  const sessionUser = useSelector(state => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -20,10 +20,12 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <div className='container'>
-        <BookShelf />
-        <NoteDesk />
-      </div>
+      {sessionUser &&
+        <div className='container'>
+          <BookShelf />
+          <NoteDesk />
+        </div>
+      }
       {isLoaded && (
         <Switch>
           <Route path="/login">

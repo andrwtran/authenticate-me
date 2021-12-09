@@ -14,10 +14,11 @@ function NoteList({ setShowAddNoteForm }) {
 
   const notesObj = useSelector((state) => state.note.entries);
   const notes = Object.values(notesObj);
+  const booksObj = useSelector((state) => state.book.entries);
 
   useEffect(() => {
     dispatch(getNotes(bookId));
-  }, [dispatch, bookId]);
+  }, [dispatch, bookId, booksObj]);
 
   return (
     <div>

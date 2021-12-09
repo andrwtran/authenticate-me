@@ -8,7 +8,6 @@ function AddNoteInput({ setShowAddNoteForm }) {
   const dispatch = useDispatch();
 
   const { bookId } = useParams();
-  console.log(bookId);
 
   const [name, setName] = useState("");
   const [text, setText] = useState("");

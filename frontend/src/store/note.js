@@ -2,6 +2,8 @@ import { csrfFetch } from './csrf';
 
 const LOAD_NOTES = 'notes/LOAD_NOTES';
 const ADD_NOTE = 'notes/ADD_NOTE';
+const REMOVE_NOTE = 'notes/REMOVE_NOTE';
+const UPDATE_NOTE = 'notes/UPDATE_NOTE';
 
 export const load = (notes) => {
   return { type: LOAD_NOTES, notes };
@@ -9,6 +11,14 @@ export const load = (notes) => {
 
 const add = (newNote) => {
   return { type: ADD_NOTE, newNote };
+};
+
+const remove = (noteId) => {
+  return { type: REMOVE_NOTE, noteId };
+};
+
+const update = (note) => {
+  return { type: UPDATE_NOTE, note};
 };
 
 export const getNotes = (bookId) => async (dispatch) => {
@@ -33,6 +43,33 @@ export const createNote = (newNote) => async (dispatch) => {
   }
 };
 
+export const deleteNote = (noteId, bookId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/books/${bookId}/notes/${noteId}`, {
+    method: 'delete'
+  });
+
+  if (response.ok) {
+    const note = await response.json();
+    dispatch(remove(note.id));
+  }
+};
+
+export const updateNote = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/books/${data.bookId}/notes/${data.id}`, {
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    const note = await response.json();
+    dispatch(update(note));
+    return note;
+  }
+}
+
 const initialState = { entries: {} };
 
 const noteReducer = (state = initialState, action) => {
@@ -46,6 +83,15 @@ const noteReducer = (state = initialState, action) => {
     };
     case ADD_NOTE: {
       const newState = { ...state, entries: { ...state.entries, [action.newNote.id]: action.newNote } };
+      return newState;
+    };
+    case REMOVE_NOTE: {
+      const newState = { ...state, entries: { ...state.entries } };
+      delete newState.entries[action.noteId];
+      return newState;
+    };
+    case UPDATE_NOTE: {
+      const newState = { ...state, entries: { ...state.entries, [action.note.id]: action.note } };
       return newState;
     };
     default:

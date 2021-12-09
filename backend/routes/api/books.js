@@ -78,7 +78,23 @@ router.post('/:bookId', requireAuth, asyncHandler(async function(req, res) {
 
 // DELETE NOTES FROM A BOOK
 
+router.delete("/:bookId/notes/:noteId", requireAuth, asyncHandler(async function (req, res) {
+  const noteId = parseInt(req.params.noteId, 10);
+  const note = await Note.findByPk(noteId);
+  await Note.destroy({ where: { id: noteId }})
+
+  return res.json(note);
+}));
+
 // EDIT NOTE IN A BOOK
+
+router.put('/:bookId/notes/:noteId', requireAuth, asyncHandler(async function (req, res) {
+  const noteId = parseInt(req.params.noteId, 10);
+  await Note.update(req.body, { where: { id: noteId }});
+  const note = await Note.findByPk(noteId);
+
+  return res.json(note);
+}));
 
 
 

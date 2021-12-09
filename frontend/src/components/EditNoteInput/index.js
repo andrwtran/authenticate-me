@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateNote } from '../../store/note';
 import { useParams } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import DeleteNoteButton from "../DeleteNoteButton";
 import './EditNoteInput.css';
 
-function EditNoteInput() {
+function EditNoteInput({ setShowAddNoteForm }) {
   const dispatch = useDispatch();
 
   const { noteId } = useParams();
@@ -17,6 +17,15 @@ function EditNoteInput() {
 
   const [name, setName] = useState(note.note_name);
   const [text, setText] = useState(note.note_text);
+
+  useEffect(() =>{
+    setShowAddNoteForm(false);
+  });
+
+  useEffect(() => {
+    setName(note.note_name);
+    setText(note.note_text);
+  }, [noteId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

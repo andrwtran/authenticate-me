@@ -16,7 +16,7 @@ function DeleteNoteButton({ noteId, bookId }) {
 
   return (
     <button onClick={handleSubmit}>
-      <i className="fas fa-trash" />
+      Delete
     </button>
   );
 

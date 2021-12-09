@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 import EditNoteInput from "../EditNoteInput";
 import './NoteList.css';
 
-function NoteList() {
+function NoteList({ setShowAddNoteForm }) {
   const dispatch = useDispatch();
 
   const { bookId } = useParams();
@@ -30,7 +30,7 @@ function NoteList() {
         ))}
       </ul>
       <Route path='/books/:bookId/notes/:noteId'>
-          <EditNoteInput />
+          <EditNoteInput setShowAddNoteForm={setShowAddNoteForm}/>
       </Route>
     </div>
   );

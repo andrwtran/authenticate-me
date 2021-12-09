@@ -1,7 +1,7 @@
 .addNote {
   position: absolute;
   left: 500px;
-  bottom: 50px;
+  bottom: 20px;
   z-index: 1;
 }
 

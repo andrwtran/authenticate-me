@@ -67,7 +67,7 @@ function BookShelf() {
               <i className="fas fa-plus-square" />
             </button>
             {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm}/>}
-            <NoteList />
+            <NoteList setShowAddNoteForm={setShowAddNoteForm}/>
           </Route>
         <h2>TAGS</h2>
         <ul>

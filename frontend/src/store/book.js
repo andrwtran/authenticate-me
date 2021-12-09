@@ -1,26 +1,34 @@
 import { csrfFetch } from './csrf';
 
-const LOAD_BOOKS = 'books/loadBooks';
-const ADD_BOOK = 'books/addBook';
-const REMOVE_BOOK = 'items/removeBook';
+const LOAD_BOOKS = 'books/LOAD_BOOKS';
+const ADD_BOOK = 'books/ADD_BOOK';
+const REMOVE_BOOK = 'books/REMOVE_BOOK';
+const UPDATE_BOOK = 'books/UPDATE_BOOK';
 
-export const loadBooks = (books) => {
+const load = (books) => {
   return { type: LOAD_BOOKS, books };
 };
 
-export const addBook = (newBook) => {
+const add = (newBook) => {
   return { type: ADD_BOOK, newBook };
 };
 
-export const removeBook = (bookId) => {
+const remove = (bookId) => {
   return { type: REMOVE_BOOK, bookId };
+};
+
+const update = (book) => {
+  return { type: UPDATE_BOOK, book};
 };
 
 export const getBooks = () => async (dispatch) => {
   const response = await fetch('/api/books');
-  const books = await response.json();
-  dispatch(loadBooks(books));
-  return books;
+
+  if (response.ok) {
+    const books = await response.json();
+    dispatch(load(books));
+    return books;
+  }
 };
 
 export const createBook = (newBook) => async (dispatch) => {
@@ -32,7 +40,7 @@ export const createBook = (newBook) => async (dispatch) => {
   const book = await response.json();
 
   if (response.ok) {
-    dispatch(addBook(book));
+    dispatch(add(book));
     return book;
   }
 };
@@ -44,9 +52,25 @@ export const deleteBook = (bookId) => async (dispatch) => {
 
   if (response.ok) {
     const book = await response.json();
-    dispatch(removeBook(book.id));
+    dispatch(remove(book.id));
   }
 };
+
+export const updateBook = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/books/${data.id}`, {
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    const book = await response.json();
+    dispatch(update(book));
+    return book;
+  }
+}
 
 const initialState = { entries: {} };
 
@@ -66,6 +90,10 @@ const bookReducer = (state = initialState, action) => {
     case REMOVE_BOOK: {
       const newState = { ...state };
       delete newState.entries[action.bookId];
+      return newState;
+    };
+    case UPDATE_BOOK: {
+      const newState = { ...state, entries: { ...state.entries, [action.book.id]: action.book } };
       return newState;
     };
     default:

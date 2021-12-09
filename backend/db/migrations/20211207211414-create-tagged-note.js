@@ -11,11 +11,13 @@ module.exports = {
       tagId: {
         allowNull: false,
         references: { model: 'Tags' },
+        onDelete: 'CASCADE',
         type: Sequelize.INTEGER
       },
       noteId: {
         allowNull: false,
         references: { model: 'Notes' },
+        onDelete: 'CASCADE',
         type: Sequelize.INTEGER
       },
       createdAt: {

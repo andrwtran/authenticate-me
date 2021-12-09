@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getBooks } from '../../store/book';
 import { Route, NavLink } from 'react-router-dom';
 import AddBookInput from "../AddBookInput";
+import EditBookInput from "../EditBookInput";
 import NoteList from "../NoteList";
 import DeleteBookButton from "../DeleteBookButton";
 import './BookShelf.css';
@@ -15,24 +16,44 @@ function BookShelf() {
   const booksObj = useSelector((state) => state.book.entries);
   const books = Object.values(booksObj);
 
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [editBookId, setEditBookId] = useState(null);
+
   useEffect(() => {
     dispatch(getBooks());
-  }, [booksObj]);
+  }, [dispatch]);
+
+  const handleAddClick = (e) => {
+    e.preventDefault();
+    setShowAddForm(!showAddForm);
+  };
 
   if (sessionUser) {
     return (
       <div>
         <h2>BOOKS</h2>
-        <AddBookInput />
+        <button onClick={ handleAddClick }>
+          <i className="fas fa-plus-square" />
+        </button>
+        {showAddForm && <AddBookInput />}
         <ul>
           {books.map(({ id, book_name }) => (
             <li key={id}>
               <i className="fas fa-book" />
               <NavLink to={`/books/${id}`}>{book_name}</NavLink>
-              <DeleteBookButton bookId={id}/>
+              <button onClick={(e) => {
+                e.preventDefault();
+                setShowEditForm(!showEditForm);
+                setEditBookId(id);
+              }}>
+                <i className="fas fa-edit" />
+              </button>
+              <DeleteBookButton bookId={id} />
             </li>
           ))}
         </ul>
+        {showEditForm && <EditBookInput bookId={ editBookId } setShowEditForm={ setShowEditForm } />}
         <h2>NOTES</h2>
             <Route path={`/books/:bookId`}>
               <NoteList />

@@ -13,7 +13,7 @@ function DeleteBookButton({ bookId }) {
 
   return (
     <button onClick={handleSubmit}>
-      Delete
+      <i className="fas fa-trash" />
     </button>
   );
 

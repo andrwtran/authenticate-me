@@ -18,6 +18,7 @@ module.exports = {
       bookId: {
         allowNull: false,
         references: { model: 'Books' },
+        onDelete: 'CASCADE',
         type: Sequelize.INTEGER
       },
       createdAt: {

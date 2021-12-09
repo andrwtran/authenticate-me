@@ -32,6 +32,14 @@ router.post('/', requireAuth, asyncHandler(async function(req, res) {
 
 // EDIT A BOOK
 
+router.put('/:bookId', requireAuth, asyncHandler(async function (req, res) {
+  const bookId = parseInt(req.params.bookId, 10);
+  await Book.update(req.body, { where: { id: bookId }});
+  const book = await Book.findByPk(bookId);
+
+  return res.json(book);
+}));
+
 // DELETE A BOOK
 
 router.delete("/:bookId", requireAuth, asyncHandler(async function (req, res) {

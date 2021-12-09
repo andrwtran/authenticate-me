@@ -5,6 +5,7 @@ import { getBooks } from '../../store/book';
 import { Route, NavLink } from 'react-router-dom';
 import AddBookInput from "../AddBookInput";
 import EditBookInput from "../EditBookInput";
+import AddNoteInput from "../AddNoteInput";
 import NoteList from "../NoteList";
 import DeleteBookButton from "../DeleteBookButton";
 import './BookShelf.css';
@@ -16,27 +17,33 @@ function BookShelf() {
   const booksObj = useSelector((state) => state.book.entries);
   const books = Object.values(booksObj);
 
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [showEditForm, setShowEditForm] = useState(false);
+  const [showAddBookForm, setShowAddBookForm] = useState(false);
+  const [showAddNoteForm, setShowAddNoteForm] = useState(false);
+  const [showEditBookForm, setShowEditBookForm] = useState(false);
   const [editBookId, setEditBookId] = useState(null);
 
   useEffect(() => {
     dispatch(getBooks());
   }, [dispatch]);
 
-  const handleAddClick = (e) => {
+  const handleAddBookClick = (e) => {
     e.preventDefault();
-    setShowAddForm(!showAddForm);
+    setShowAddBookForm(!showAddBookForm);
+  };
+
+  const handleAddNoteClick = (e) => {
+    e.preventDefault();
+    setShowAddNoteForm(!showAddNoteForm);
   };
 
   if (sessionUser) {
     return (
       <div>
         <h2>BOOKS</h2>
-        <button onClick={ handleAddClick }>
+        <button onClick={handleAddBookClick}>
           <i className="fas fa-plus-square" />
         </button>
-        {showAddForm && <AddBookInput />}
+        {showAddBookForm && <AddBookInput />}
         <ul>
           {books.map(({ id, book_name }) => (
             <li key={id}>
@@ -44,7 +51,7 @@ function BookShelf() {
               <NavLink to={`/books/${id}`}>{book_name}</NavLink>
               <button onClick={(e) => {
                 e.preventDefault();
-                setShowEditForm(!showEditForm);
+                setShowEditBookForm(!showEditBookForm);
                 setEditBookId(id);
               }}>
                 <i className="fas fa-edit" />
@@ -53,11 +60,15 @@ function BookShelf() {
             </li>
           ))}
         </ul>
-        {showEditForm && <EditBookInput bookId={ editBookId } setShowEditForm={ setShowEditForm } />}
+        {showEditBookForm && <EditBookInput bookId={editBookId} setShowEditBookForm={setShowEditBookForm} setEditBookId={setEditBookId} />}
         <h2>NOTES</h2>
-            <Route path={`/books/:bookId`}>
-              <NoteList />
-            </Route>
+          <Route path={`/books/:bookId`}>
+            <button onClick={handleAddNoteClick}>
+              <i className="fas fa-plus-square" />
+            </button>
+            {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm}/>}
+            <NoteList />
+          </Route>
         <h2>TAGS</h2>
         <ul>
           <li>TO-DO</li>

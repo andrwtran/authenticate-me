@@ -1,14 +1,27 @@
-.notedesk {
+/* .editNote {
   align-self: center;
   position: relative;
   left: 350px;
+} */
+
+.quotes {
+  align-self: center;
+  position: relative;
+  left: 150px;
+  z-index: 0;
 }
 
-.notetext {
+figure {
+  color: white;
+  font-size: x-large;
+  max-width: 500px;
+}
+
+/* .noteText {
   border: none;
-}
+} */
 
-textarea {
+/* textarea {
   min-height: 500px;
   min-width: 800px;
-}
+} */

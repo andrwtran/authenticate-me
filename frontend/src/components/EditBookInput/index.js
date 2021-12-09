@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateBook } from '../../store/book';
 import './EditBookInput.css';
 
-function EditBookInput( { bookId, setShowEditForm }) {
+function EditBookInput( { bookId, setShowEditBookForm, setEditBookId }) {
   const dispatch = useDispatch();
   const book = useSelector((state) => state.book.entries[bookId]);
 
@@ -15,9 +15,9 @@ function EditBookInput( { bookId, setShowEditForm }) {
       ...book,
       book_name: name
     };
-    console.log('!!!!', payload);
     dispatch(updateBook(payload));
-    setShowEditForm(false);
+    setShowEditBookForm(false);
+    setEditBookId(null);
   };
 
   return (

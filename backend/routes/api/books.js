@@ -61,6 +61,25 @@ router.get('/:bookId', requireAuth, asyncHandler(async function(req, res) {
   return res.json(notes);
 }));
 
+// **ADD NOTE TO A BOOK**
+
+router.post('/:bookId', requireAuth, asyncHandler(async function(req, res) {
+  const bookId = parseInt(req.params.bookId, 10);
+  const { note_name, note_text } = req.body;
+
+  const note = await Note.create({
+    note_name,
+    note_text,
+    bookId
+  });
+
+  return res.json(note);
+}));
+
+// DELETE NOTES FROM A BOOK
+
+// EDIT NOTE IN A BOOK
+
 
 
 module.exports = router;

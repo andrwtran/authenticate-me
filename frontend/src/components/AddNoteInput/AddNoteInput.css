@@ -1,0 +1,19 @@
+.addNote {
+  position: absolute;
+  left: 500px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.noteForm {
+  border: none;
+}
+
+textarea {
+  min-height: 500px;
+  min-width: 800px;
+}
+
+.noteForm > div {
+  display: flex;
+}

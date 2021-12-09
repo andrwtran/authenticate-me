@@ -88,7 +88,7 @@ const bookReducer = (state = initialState, action) => {
       return newState;
     };
     case REMOVE_BOOK: {
-      const newState = { ...state };
+      const newState = { ...state, entries: { ...state.entries } };
       delete newState.entries[action.bookId];
       return newState;
     };

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { getAllNotes } from '../../store/note';
 import './SearchBox.css';
 
-function SearchBox() {
+function SearchBox({ setShowSearchBox }) {
   const dispatch = useDispatch();
   const [terms, setTerms] = useState("");
   const [results, setResults] = useState([]);
@@ -29,7 +29,7 @@ function SearchBox() {
     };
 
     const searchResults = notes.filter((note) => (
-      note.note_name.includes(terms) || note.note_text.includes(terms)
+      note.note_name.toUpperCase().includes(terms.toUpperCase()) || note.note_text.toUpperCase().includes(terms.toUpperCase())
     ));
 
     if (!searchResults.length) {
@@ -38,6 +38,11 @@ function SearchBox() {
 
     setResults(searchResults);
     setTerms('');
+  };
+
+  const handleLinkClick = (e) => {
+    e.preventDefault();
+    setShowSearchBox(false);
   };
 
   return (
@@ -53,9 +58,8 @@ function SearchBox() {
         <button type="submit">Search</button>
       </form>
       <ul>
-        <li></li>
         {results.length > 0 && results.map((note) => (
-          <li>
+          <li key={note.id} onClick={handleLinkClick}>
             <NavLink
               to={`books/${note.bookId}/notes/${note.id}`}
               style={linkStyle}

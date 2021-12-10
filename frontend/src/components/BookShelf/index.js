@@ -93,7 +93,7 @@ function BookShelf() {
           <button onClick={handleSearchClick}>
             <i className="fas fa-search" /> Search
           </button>
-          {showSearchBox && <SearchBox />}
+          {showSearchBox && <SearchBox setShowSearchBox={setShowSearchBox}/>}
         </Route>
         <Route path={`/books/:bookId`}>
           <button onClick={handleAddNoteClick}>

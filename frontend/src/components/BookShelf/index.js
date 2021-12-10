@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getBooks } from '../../store/book';
-import { Route, NavLink, withRouter } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import AddBookInput from "../AddBookInput";
 import EditBookInput from "../EditBookInput";
 import AddNoteInput from "../AddNoteInput";

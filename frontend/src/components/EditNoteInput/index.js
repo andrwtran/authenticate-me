@@ -50,19 +50,23 @@ function EditNoteInput({ setShowAddNoteForm }) {
   return (
     <div className='editNote'>
       <form className='noteForm' onSubmit={handleSubmit}>
-        <input
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-        placeholder="New Note"
-        name="name"
-        />
-        <textarea
-        type="text"
-        onChange={(e) => setText(e.target.value)}
-        value={text}
-        name="text"
-        />
+        <div>
+          <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          placeholder="New Note"
+          name="name"
+          />
+        </div>
+        <div>
+          <textarea
+          type="text"
+          onChange={(e) => setText(e.target.value)}
+          value={text}
+          name="text"
+          />
+        </div>
         <div>
           <button type="submit">Save</button>
           <DeleteNoteButton noteId={noteId} bookId={note.bookId}/>

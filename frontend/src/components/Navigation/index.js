@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import logo from "../../images/logo.png";
@@ -43,7 +43,6 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className="navBar">
-      {!sessionUser && <div className='logo'><img src={logo} alt=""></img></div>}
       <ul>
         <li>
           <NavLink

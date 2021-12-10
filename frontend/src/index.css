@@ -1,13 +1,46 @@
-/* TODO Add site wide styles */
 
 body {
   background-image: url('/src/images/login-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100%;
+  /* overflow: hidden; */
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: fit-content(100%) 1.7fr;
+  grid-template-rows: 1.8fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". .";
+  min-width: 50vw;
+}
+
+.root {
+  display: grid;
+  grid-template-columns: 0.3fr 1.7fr;
+  grid-template-rows: 0.2fr 1.8fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". .";
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.logo {
+  z-index: -1;
+  background-image: url('/src/images/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 500px;
+  min-width: 500px;
+  height: 100%;
   width: 100%;
+  position: fixed;
+  left: 25%;
+  bottom: 10%;
 }

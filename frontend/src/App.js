@@ -7,7 +7,6 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import BookShelf from "./components/BookShelf";
 import NoteDesk from "./components/NoteDesk";
-import logo from "./images/logo.png";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +36,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      {!sessionUser && <div className='logo'></div>}
     </>
   );
 }

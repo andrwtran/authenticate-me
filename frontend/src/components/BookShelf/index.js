@@ -8,6 +8,7 @@ import EditBookInput from "../EditBookInput";
 import AddNoteInput from "../AddNoteInput";
 import NoteList from "../NoteList";
 import DeleteBookButton from "../DeleteBookButton";
+import SearchBox from "../SearchBox";
 import './BookShelf.css';
 
 function BookShelf() {
@@ -20,21 +21,22 @@ function BookShelf() {
   const [showAddBookForm, setShowAddBookForm] = useState(false);
   const [showAddNoteForm, setShowAddNoteForm] = useState(false);
   const [showEditBookForm, setShowEditBookForm] = useState(false);
+  const [showSearchBox, setShowSearchBox] = useState(false);
   const [editBookId, setEditBookId] = useState(null);
 
 
-const linkStyle = {
-  margin: "1rem",
-  color: 'white'
-};
+  const linkStyle = {
+    margin: "1rem",
+    color: 'white'
+  };
 
-const activeLinkStyle = {
-  color: "gray",
-}
+  const activeLinkStyle = {
+    color: "gray",
+  }
 
-const iconStyle = {
-  color: "white"
-}
+  const iconStyle = {
+    color: "white"
+  }
 
   useEffect(() => {
     dispatch(getBooks());
@@ -48,6 +50,11 @@ const iconStyle = {
   const handleAddNoteClick = (e) => {
     e.preventDefault();
     setShowAddNoteForm(!showAddNoteForm);
+  };
+
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    setShowSearchBox(!showSearchBox);
   };
 
   if (sessionUser) {
@@ -65,16 +72,16 @@ const iconStyle = {
                 <i className="fas fa-book" />
               </span>
               <NavLink
-              to={`/books/${id}`}
-              activeStyle={activeLinkStyle}
-              style={linkStyle}
+                to={`/books/${id}`}
+                activeStyle={activeLinkStyle}
+                style={linkStyle}
               >{book_name}</NavLink>
               <button onClick={(e) => {
                 e.preventDefault();
                 setShowEditBookForm(!showEditBookForm);
                 setEditBookId(id);
               }}>
-                  <i className="fas fa-edit" />
+                <i className="fas fa-edit" />
               </button>
               <DeleteBookButton bookId={id} />
             </li>
@@ -82,13 +89,19 @@ const iconStyle = {
         </ul>
         {showEditBookForm && <EditBookInput bookId={editBookId} setShowEditBookForm={setShowEditBookForm} setEditBookId={setEditBookId} />}
         <h2>NOTES</h2>
-          <Route path={`/books/:bookId`}>
-            <button onClick={handleAddNoteClick}>
-              <i className="fas fa-plus-square" /> Add
-            </button>
-            {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm}/>}
-            <NoteList setShowAddNoteForm={setShowAddNoteForm}/>
-          </Route>
+        <Route exact path='/'>
+          <button onClick={handleSearchClick}>
+            <i className="fas fa-search" /> Search
+          </button>
+          {showSearchBox && <SearchBox setShowSearchBox={setShowSearchBox}/>}
+        </Route>
+        <Route path={`/books/:bookId`}>
+          <button onClick={handleAddNoteClick}>
+            <i className="fas fa-plus-square" /> Add
+          </button>
+          {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm} />}
+          <NoteList setShowAddNoteForm={setShowAddNoteForm} />
+        </Route>
         <h2>TAGS</h2>
         <ul>
           <li>TO-DO</li>

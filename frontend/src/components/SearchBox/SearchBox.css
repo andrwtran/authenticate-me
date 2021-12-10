@@ -1,0 +1,18 @@
+.searchBox {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  z-index: 1;
+  background-color : rgba(0, 0, 0, 0.9);
+  min-height: 500px;
+  min-width: 500px;
+  color: white;
+}
+
+.searchBox form {
+  margin-left: 5px;
+}
+
+.searchBox li {
+  padding: 5px;
+}

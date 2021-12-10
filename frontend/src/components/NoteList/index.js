@@ -11,11 +11,15 @@ function NoteList({ setShowAddNoteForm }) {
   const dispatch = useDispatch();
 
   const { bookId } = useParams();
+  const booksObj = useSelector((state) => state.book.entries);
 
   const notesObj = useSelector((state) => state.note.entries);
   const notes = Object.values(notesObj);
-  const booksObj = useSelector((state) => state.book.entries);
 
+  useEffect(() => {
+    dispatch(getNotes(bookId));
+  }, [dispatch, bookId, booksObj]);
+  
   const linkStyle = {
     margin: "1rem",
     color: 'white'
@@ -29,9 +33,6 @@ function NoteList({ setShowAddNoteForm }) {
     color: "white"
   }
 
-  useEffect(() => {
-    dispatch(getNotes(bookId));
-  }, [dispatch, bookId, booksObj]);
 
   return (
     <div className="noteList">

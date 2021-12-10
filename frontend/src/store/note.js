@@ -5,7 +5,7 @@ const ADD_NOTE = 'notes/ADD_NOTE';
 const REMOVE_NOTE = 'notes/REMOVE_NOTE';
 const UPDATE_NOTE = 'notes/UPDATE_NOTE';
 
-export const load = (notes) => {
+const load = (notes) => {
   return { type: LOAD_NOTES, notes };
 };
 
@@ -23,6 +23,13 @@ const update = (note) => {
 
 export const getNotes = (bookId) => async (dispatch) => {
   const response = await fetch(`/api/books/${bookId}`);
+  const notes = await response.json();
+  dispatch(load(notes));
+  return notes;
+};
+
+export const getAllNotes = () => async (dispatch) => {
+  const response = await fetch('/api/notes');
   const notes = await response.json();
   dispatch(load(notes));
   return notes;

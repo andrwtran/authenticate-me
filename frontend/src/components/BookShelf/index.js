@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getBooks } from '../../store/book';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, withRouter } from 'react-router-dom';
 import AddBookInput from "../AddBookInput";
 import EditBookInput from "../EditBookInput";
 import AddNoteInput from "../AddNoteInput";
@@ -22,6 +22,20 @@ function BookShelf() {
   const [showEditBookForm, setShowEditBookForm] = useState(false);
   const [editBookId, setEditBookId] = useState(null);
 
+
+const linkStyle = {
+  margin: "1rem",
+  color: 'white'
+};
+
+const activeLinkStyle = {
+  color: "gray",
+}
+
+const iconStyle = {
+  color: "white"
+}
+
   useEffect(() => {
     dispatch(getBooks());
   }, [dispatch]);
@@ -38,23 +52,29 @@ function BookShelf() {
 
   if (sessionUser) {
     return (
-      <div>
+      <div className="bookshelf">
         <h2>BOOKS</h2>
         <button onClick={handleAddBookClick}>
-          <i className="fas fa-plus-square" />
+          <i className="fas fa-plus-square" /> Add
         </button>
         {showAddBookForm && <AddBookInput />}
         <ul>
           {books.map(({ id, book_name }) => (
             <li key={id}>
-              <i className="fas fa-book" />
-              <NavLink to={`/books/${id}`}>{book_name}</NavLink>
+              <span style={iconStyle}>
+                <i className="fas fa-book" />
+              </span>
+              <NavLink
+              to={`/books/${id}`}
+              activeStyle={activeLinkStyle}
+              style={linkStyle}
+              >{book_name}</NavLink>
               <button onClick={(e) => {
                 e.preventDefault();
                 setShowEditBookForm(!showEditBookForm);
                 setEditBookId(id);
               }}>
-                <i className="fas fa-edit" />
+                  <i className="fas fa-edit" />
               </button>
               <DeleteBookButton bookId={id} />
             </li>
@@ -64,7 +84,7 @@ function BookShelf() {
         <h2>NOTES</h2>
           <Route path={`/books/:bookId`}>
             <button onClick={handleAddNoteClick}>
-              <i className="fas fa-plus-square" />
+              <i className="fas fa-plus-square" /> Add
             </button>
             {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm}/>}
             <NoteList setShowAddNoteForm={setShowAddNoteForm}/>

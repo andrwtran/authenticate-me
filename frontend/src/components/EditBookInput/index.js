@@ -11,6 +11,11 @@ function EditBookInput( { bookId, setShowEditBookForm, setEditBookId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!name) {
+      return alert('Your book must have a name.')
+    }
+
     const payload = {
       ...book,
       book_name: name

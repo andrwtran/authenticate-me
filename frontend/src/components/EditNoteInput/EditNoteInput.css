@@ -1,7 +1,7 @@
 .editNote {
   position: absolute;
-  left: 500px;
-  bottom: 20px;
+  top: 20%;
+  left: 40%;
   z-index: 1;
 }
 

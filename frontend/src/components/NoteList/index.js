@@ -16,17 +16,36 @@ function NoteList({ setShowAddNoteForm }) {
   const notes = Object.values(notesObj);
   const booksObj = useSelector((state) => state.book.entries);
 
+  const linkStyle = {
+    margin: "1rem",
+    color: 'white'
+  };
+
+  const activeLinkStyle = {
+    color: "gray",
+  }
+
+  const iconStyle = {
+    color: "white"
+  }
+
   useEffect(() => {
     dispatch(getNotes(bookId));
   }, [dispatch, bookId, booksObj]);
 
   return (
-    <div>
+    <div className="noteList">
       <ul>
         {notes.map(({ id, bookId, note_name, note_text }) => (
           <li key={id}>
-            <i className="fas fa-sticky-note" />
-            <NavLink to={`/books/${bookId}/notes/${id}`}>{note_name}</NavLink>
+            <span style={iconStyle}>
+              <i className="fas fa-sticky-note" />
+            </span>
+            <NavLink
+            to={`/books/${bookId}/notes/${id}`}
+            activeStyle={activeLinkStyle}
+            style={linkStyle}
+            >{note_name}</NavLink>
           </li>
         ))}
       </ul>

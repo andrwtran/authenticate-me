@@ -1,13 +1,9 @@
-/* .editNote {
-  align-self: center;
-  position: relative;
-  left: 350px;
-} */
+
 
 .quotes {
   align-self: center;
-  position: relative;
-  left: 150px;
+  position: absolute;
+  left: 25%;
   z-index: 0;
 }
 
@@ -16,12 +12,3 @@ figure {
   font-size: x-large;
   max-width: 500px;
 }
-
-/* .noteText {
-  border: none;
-} */
-
-/* textarea {
-  min-height: 500px;
-  min-width: 800px;
-} */

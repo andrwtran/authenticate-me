@@ -14,6 +14,11 @@ function AddNoteInput({ setShowAddNoteForm }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!name) {
+      return alert('Your note must have a name.')
+    }
+
     const newNote = {
       note_name: name,
       note_text: text,

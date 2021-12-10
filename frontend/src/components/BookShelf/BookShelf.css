@@ -2,3 +2,13 @@ ul {
   display: flex;
   flex-direction: column;
 }
+
+.bookshelf {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+h2 {
+  color: rgba(194, 145, 104, 0.8);
+  font-family: 'Courier New', Courier, monospace;
+}

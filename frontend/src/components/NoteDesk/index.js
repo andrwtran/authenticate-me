@@ -21,35 +21,14 @@ function NoteDesk() {
 
   if (sessionUser) {
     return (
-      // <Switch>
-      //   <Route path='/books/:bookId/notes'>
-      //     <div className='editNote'>
-      //       <form className='noteText'>
-      //         <textarea></textarea>
-      //         <button>Save</button>
-      //         <button>Delete</button>
-      //       </form>
-      //     </div>
-      //   </Route>
-      //   <Route path='/books/:bookId'>
-      //     <div className='editNote'>
-      //       <form className='noteText'>
-      //         <textarea></textarea>
-      //         <button>Save</button>
-      //       </form>
-      //     </div>
-      //   </Route>
-      //   <Route>
-          <div className='quotes'>
-            <figure>
-              <blockquote>
-                <p>{quotes[randomIndex]}</p>
-              </blockquote>
-              <figcaption>A great philosopher</figcaption>
-            </figure>
-          </div>
-      //   </Route>
-      // </Switch>
+      <div className='quotes'>
+        <figure>
+          <blockquote>
+            <p>{quotes[randomIndex]}</p>
+          </blockquote>
+          <figcaption>A great philosopher</figcaption>
+        </figure>
+      </div>
     )
   }
   return null;

@@ -6,13 +6,17 @@ import './AddBookInput.css';
 function AddBookInput() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-
   const reset = () => {
     setName("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!name) {
+      return alert('Your book must have a name.')
+    }
+
     const newBook = {
       book_name: name
     };

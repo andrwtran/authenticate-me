@@ -1,5 +1,4 @@
 ul {
-  display: flex;
   list-style-type: none;
 }
 
@@ -8,6 +7,30 @@ button {
 }
 
 .profile-dropdown {
+  height: 20px;
+}
+
+.navBar > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.navBar {
+  font-size: large;
+  color: white;
+  min-height: 60px;
+}
+
+.profileButton ul {
   display: flex;
   flex-direction: column;
+}
+
+.logo {
+  position: absolute;
+  top: -5%;
+  left: 25%;
+  z-index: -1;
 }

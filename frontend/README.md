@@ -1,76 +1,67 @@
+# Duly_Noted
 
-# Create React App Template
+Duly Noted is a note-taking app.
 
-A no-frills template from which to create React applications with
-[Create React App](https://github.com/facebook/create-react-app).
+* Technologies Used
 
-```sh
-npx create-react-app my-app --template @appacademy/simple --use-npm
-```
+* Javascript
+  * CSS
+  * HTML
+  * Express
+  * Postgres
+  * Sequelize
+  * React
 
-## Available Scripts
+* MVP
 
-In the project directory, you can run:
+* Hosted on Heroku
+* New Account Creation, Login, Demo Login
+  * Users can sign up, sign in, and log out
+  * Users can use demo button to login to see all the features
+* Books
+  * Users can create, edit, and delete books
+* Notes
+  * Users can create, edit, and delete notes
+* Search
+  * Users can use the search bar to search for notes
 
-### `npm start`
+* Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  * Git clone https://github.com/andrwtran/duly-noted.git
+  * Run npm install
+  * Install postgres
+  * Create a new user in postgres (credentials in env.example)
+  * Create a .env file (copy env.example)
+  * Run npx dotenv sequelize db:create
+  * Run npx dotenv sequelize db:migrate
+  * Run npx dotenv sequelize db:seed:all
+  * Change directory to /frontend and run npm start
+  * Change directory to /backend and run npm start
+  * Use demo login or create own user
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Dependencies
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  * "js-cookie": "^3.0.1",
+  * "react": "^17.0.2",
+  * "react-dom": "^17.0.2",
+  * "react-redux": "^7.2.6",
+  * "react-router-dom": "^5.3.0",
+  * "react-scripts": "4.0.3",
+  * "redux": "^4.1.2",
+  * "redux-thunk": "^2.4.1"
+  * "bcryptjs": "^2.4.3",
+  * "cookie-parser": "^1.4.6",
+  * "cors": "^2.8.5",
+  * "csurf": "^1.11.0",
+  * "dotenv": "^10.0.0",
+  * "express": "^4.17.1",
+  * "express-async-handler": "^1.2.0",
+  * "express-validator": "^6.13.0",
+  * "faker": "^5.5.3",
+  * "helmet": "^4.6.0",
+  * "jsonwebtoken": "^8.5.1",
+  * "morgan": "^1.10.0",
+  * "per-env": "^1.0.2",
+  * "pg": "^8.7.1",
+  * "sequelize": "^5.22.4",
+  * "sequelize-cli": "^5.5.1"

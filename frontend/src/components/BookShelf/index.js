@@ -104,10 +104,10 @@ function BookShelf() {
           {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm} />}
           <NoteList setShowAddNoteForm={setShowAddNoteForm} />
         </Route>
-        <h2>TAGS</h2>
+        {/* <h2>TAGS</h2>
         <ul>
           <li>TO-DO</li>
-        </ul>
+        </ul> */}
       </div>
     )
   }

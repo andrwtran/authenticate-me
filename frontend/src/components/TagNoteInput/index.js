@@ -7,8 +7,8 @@ import './TagNoteInput.css';
 function TagNoteInput({ nonMatchingTags, noteId }) {
   const dispatch = useDispatch();
 
-  const tagsObj = useSelector((state) => state.tag.entries);
-  const tags = Object.values(tagsObj);
+  // const tagsObj = useSelector((state) => state.tag.entries);
+  // const tags = Object.values(tagsObj);
 
   const [tagId, setTagId] = useState('');
 

@@ -1,5 +1,6 @@
 .tagList {
   display: flex;
+  flex-direction: column;
 }
 
 .tagList li {

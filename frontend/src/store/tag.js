@@ -17,8 +17,8 @@ const remove = (tagId) => {
   return { type: REMOVE_TAG, tagId };
 };
 
-const update = (tagId) => {
-  return { type: UPDATE_TAG, tagId};
+const update = (tag) => {
+  return { type: UPDATE_TAG, tag};
 };
 
 export const getAllTags = () => async (dispatch) => {
@@ -28,15 +28,24 @@ export const getAllTags = () => async (dispatch) => {
   return tags;
 };
 
+export const getTagsByNoteId = (noteId) => async (dispatch) => {
+  const response = await fetch(`/api/tags/notes/${noteId}`);
+  if (response.ok) {
+    const tags = await response.json();
+    // dispatch(load(tags));
+    return tags;
+  }
+};
+
 export const createTag = (newTag) => async (dispatch) => {
   const response = await csrfFetch(`/api/tags`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newTag)
   });
-  const tag = await response.json();
 
   if (response.ok) {
+    const tag = await response.json();
     dispatch(add(tag));
     return tag;
   }

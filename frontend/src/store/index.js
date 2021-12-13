@@ -3,13 +3,15 @@ import sessionReducer from './session';
 import bookReducer from './book';
 import noteReducer from './note';
 import tagReducer from './tag';
+import taggedNoteReducer from './taggedNote';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   book: bookReducer,
   note: noteReducer,
-  tag: tagReducer
+  tag: tagReducer,
+  taggedNote: taggedNoteReducer
 });
 
 let enhancer;

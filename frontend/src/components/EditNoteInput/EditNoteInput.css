@@ -19,3 +19,9 @@ textarea {
 .noteForm > div {
   display: flex;
 }
+
+.taglist ul {
+  display: flex;
+  flex-direction: row;
+  color: white;
+}

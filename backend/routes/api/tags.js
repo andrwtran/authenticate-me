@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Tag, TaggedNote, Book, Note } = require('../../db/models');
+const { Tag, Book, Note } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
@@ -16,24 +16,6 @@ router.get('/', requireAuth, asyncHandler(async function (req, res) {
     order: ['id']
   });
   return res.json(tags);
-}))
-
-// GET ALL NOTES WITH A TAG
-
-router.get('/:tagId', requireAuth, asyncHandler(async function (req, res) {
-  const tagId = parseInt(req.params.tagId, 10);
-  const notes = await Note.findAll({
-    include: [
-      {
-        model: Tag,
-        where: { id: tagId },
-        through: [{
-          model: TaggedNote
-        }]
-      },
-    ]
-  });
-  return res.json(notes);
 }))
 
 // ADD A NEW TAG

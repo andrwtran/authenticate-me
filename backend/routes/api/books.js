@@ -50,18 +50,7 @@ router.delete("/:bookId", requireAuth, asyncHandler(async function (req, res) {
   return res.json(book);
 }));
 
-// GET NOTES FROM A BOOK
-
-router.get('/:bookId', requireAuth, asyncHandler(async function(req, res) {
-  const bookId = parseInt(req.params.bookId, 10);
-  const notes = await Note.findAll({
-    where: { bookId: bookId },
-    order: ['id'],
-  });
-  return res.json(notes);
-}));
-
-// **ADD NOTE TO A BOOK**
+// ADD NOTE TO A BOOK
 
 router.post('/:bookId', requireAuth, asyncHandler(async function(req, res) {
   const bookId = parseInt(req.params.bookId, 10);

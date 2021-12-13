@@ -1,0 +1,7 @@
+.tagList {
+  display: flex;
+}
+
+.tagList li {
+  padding: 5px;
+}

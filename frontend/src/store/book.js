@@ -78,9 +78,13 @@ const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_BOOKS: {
       const newState = { ...state, entries: {} };
-      action.books.forEach((book) => {
+      // action.books.forEach((book) => {
+      //   newState.entries[book.id] = book;
+      // });
+      for (let i = 0; i < action.books.length; i++) {
+        let book = action.books[i];
         newState.entries[book.id] = book;
-      });
+      }
       return newState;
     };
     case ADD_BOOK: {

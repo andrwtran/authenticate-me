@@ -17,16 +17,24 @@ function NoteDesk() {
     `I called the hotel operator and she said, "How can I direct your call?' I said, "Well, you could say "Action!", and I'll begin to dial. And when I say "Goodbye", then you can yell "Cut!"`,
     `On a traffic light, green means "go" and yellow means "yield." But on a banana, it's just the opposite. Green means "hold on," yellow means "go ahead," and red means, "where did you get that banana?"`
   ];
-  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+
+  const authors = [
+    'A wise sage',
+    'A great philosopher',
+    'A learned fellow',
+  ];
+
+  const randomAuthorIndex = Math.floor(Math.random() * authors.length);
 
   if (sessionUser) {
     return (
       <div className='quotes'>
         <figure>
           <blockquote>
-            <p>{quotes[randomIndex]}</p>
+            <p>{quotes[randomQuoteIndex]}</p>
           </blockquote>
-          <figcaption>A great philosopher</figcaption>
+          <figcaption>{authors[randomAuthorIndex]}</figcaption>
         </figure>
       </div>
     )

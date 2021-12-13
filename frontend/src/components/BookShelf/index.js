@@ -44,6 +44,7 @@ function BookShelf() {
 
   const handleAddBookClick = (e) => {
     e.preventDefault();
+    setShowEditBookForm(false);
     setShowAddBookForm(!showAddBookForm);
   };
 
@@ -78,6 +79,7 @@ function BookShelf() {
               >{book_name}</NavLink>
               <button onClick={(e) => {
                 e.preventDefault();
+                setShowAddBookForm(false);
                 setShowEditBookForm(!showEditBookForm);
                 setEditBookId(id);
               }}>

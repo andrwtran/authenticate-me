@@ -83,9 +83,13 @@ const noteReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_NOTES: {
       const newState = { ...state, entries: {} };
-      action.notes.forEach((note) => {
-      newState.entries[note.id] = note;
-      });
+      // action.notes.forEach((note) => {
+      // newState.entries[note.id] = note;
+      // });
+      for (let i = 0; i < action.notes.length; i++) {
+        let note = action.notes[i];
+        newState.entries[note.id] = note;
+      }
       return newState;
     };
     case ADD_NOTE: {

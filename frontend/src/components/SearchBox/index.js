@@ -40,7 +40,7 @@ function SearchBox({ setShowSearchBox }) {
     setTerms('');
   };
 
-  const handleLinkClick = (e) => {
+  const handleCancel = (e) => {
     e.preventDefault();
     setShowSearchBox(false);
   };
@@ -56,10 +56,14 @@ function SearchBox({ setShowSearchBox }) {
           name="terms"
         />
         <button type="submit">Search</button>
+        <button onClick={handleCancel}>Cancel</button>
       </form>
       <ul>
         {results.length > 0 && results.map((note) => (
-          <li key={note.id} onClick={handleLinkClick}>
+          <li key={note.id} onClick={(e) => {
+            e.preventDefault();
+            setShowSearchBox(false);
+          }}>
             <NavLink
               to={`books/${note.bookId}/notes/${note.id}`}
               style={linkStyle}

@@ -19,7 +19,7 @@ function NoteList({ setShowAddNoteForm }) {
   useEffect(() => {
     dispatch(getNotes(bookId));
   }, [dispatch, bookId, booksObj]);
-  
+
   const linkStyle = {
     margin: "1rem",
     color: 'white'
@@ -37,7 +37,7 @@ function NoteList({ setShowAddNoteForm }) {
   return (
     <div className="noteList">
       <ul>
-        {notes.map(({ id, bookId, note_name, note_text }) => (
+        {notes.map(({ id, bookId, note_name }) => (
           <li key={id}>
             <span style={iconStyle}>
               <i className="fas fa-sticky-note" />

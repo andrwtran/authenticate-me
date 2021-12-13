@@ -35,7 +35,7 @@ function TagList() {
         {tags.map(({ id, tag_name }) => (
           <li key={id}>
             <span style={iconStyle}>
-              <i className="fas fa-sticky-note" />
+              <i className="fas fa-tag" />
             </span>
             <NavLink
             to={`/tags/${id}`}

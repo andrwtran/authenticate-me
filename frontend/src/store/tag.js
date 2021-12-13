@@ -1,9 +1,24 @@
 import { csrfFetch } from './csrf';
 
 const LOAD_TAGS = 'tags/LOAD_TAGS';
+const ADD_TAG = 'tags/ADD_TAG';
+const REMOVE_TAG = 'tags/REMOVE_TAG';
+const UPDATE_TAG = 'tags/UPDATE_TAG';
 
 const load = (tags) => {
   return { type: LOAD_TAGS, tags };
+};
+
+const add = (newTag) => {
+  return { type: ADD_TAG, newTag };
+};
+
+const remove = (tagId) => {
+  return { type: REMOVE_TAG, tagId };
+};
+
+const update = (tagId) => {
+  return { type: UPDATE_TAG, tagId};
 };
 
 export const getAllTags = () => async (dispatch) => {
@@ -12,6 +27,47 @@ export const getAllTags = () => async (dispatch) => {
   dispatch(load(tags));
   return tags;
 };
+
+export const createTag = (newTag) => async (dispatch) => {
+  const response = await csrfFetch(`/api/tags`, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newTag)
+  });
+  const tag = await response.json();
+
+  if (response.ok) {
+    dispatch(add(tag));
+    return tag;
+  }
+};
+
+export const deleteTag = (tagId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/tags/${tagId}`, {
+    method: 'delete'
+  });
+
+  if (response.ok) {
+    const tag = await response.json();
+    dispatch(remove(tag.id));
+  }
+};
+
+export const updateTag = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/tags/${data.id}`, {
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    const tag = await response.json();
+    dispatch(update(tag));
+    return tag;
+  }
+}
 
 const initialState = { entries: {} };
 
@@ -23,6 +79,19 @@ const tagReducer = (state = initialState, action) => {
         let tag = action.tags[i];
         newState.entries[tag.id] = tag;
       }
+      return newState;
+    };
+    case ADD_TAG: {
+      const newState = { ...state, entries: { ...state.entries, [action.newTag.id]: action.newTag } };
+      return newState;
+    };
+    case REMOVE_TAG: {
+      const newState = { ...state, entries: { ...state.entries } };
+      delete newState.entries[action.tagId];
+      return newState;
+    };
+    case UPDATE_TAG: {
+      const newState = { ...state, entries: { ...state.entries, [action.tag.id]: action.tag } };
       return newState;
     };
     default:

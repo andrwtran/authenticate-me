@@ -28,6 +28,13 @@ export const getNotes = (bookId) => async (dispatch) => {
   return notes;
 };
 
+export const getNotesByTag = (tagId) => async (dispatch) => {
+  const response = await fetch(`/api/tags/${tagId}`);
+  const notes = await response.json();
+  dispatch(load(notes));
+  return notes;
+};
+
 export const getAllNotes = () => async (dispatch) => {
   const response = await fetch('/api/notes');
   const notes = await response.json();

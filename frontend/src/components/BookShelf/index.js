@@ -10,6 +10,8 @@ import NoteList from "../NoteList";
 import DeleteBookButton from "../DeleteBookButton";
 import SearchBox from "../SearchBox";
 import TagList from "../TagList";
+import TagNoteList from "../TagNoteList";
+import AddTagInput from "../AddTagInput";
 import './BookShelf.css';
 
 function BookShelf() {
@@ -21,6 +23,7 @@ function BookShelf() {
 
   const [showAddBookForm, setShowAddBookForm] = useState(false);
   const [showAddNoteForm, setShowAddNoteForm] = useState(false);
+  const [showAddTagForm, setShowAddTagForm] = useState(false);
   const [showEditBookForm, setShowEditBookForm] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [editBookId, setEditBookId] = useState(null);
@@ -57,6 +60,11 @@ function BookShelf() {
   const handleSearchClick = (e) => {
     e.preventDefault();
     setShowSearchBox(!showSearchBox);
+  };
+
+  const handleAddTagClick = (e) => {
+    e.preventDefault();
+    setShowAddTagForm(!showAddTagForm);
   };
 
   if (sessionUser) {
@@ -105,7 +113,14 @@ function BookShelf() {
           {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm} />}
           <NoteList setShowAddNoteForm={setShowAddNoteForm} />
         </Route>
+        <Route path ={'/tags/:tagId'}>
+              <TagNoteList />
+        </Route>
         <h2>TAGS</h2>
+          <button onClick={handleAddTagClick}>
+            <i className="fas fa-plus-square" /> Add
+          </button>
+          {showAddTagForm && <AddTagInput />}
           <TagList />
       </div>
     )

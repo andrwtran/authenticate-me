@@ -13,20 +13,18 @@ Duly Noted is a note-taking app.
   * React
 
 * MVP
-
-* Hosted on Heroku
-* New Account Creation, Login, Demo Login
-  * Users can sign up, sign in, and log out
-  * Users can use demo button to login to see all the features
-* Books
-  * Users can create, edit, and delete books
-* Notes
-  * Users can create, edit, and delete notes
-* Search
-  * Users can use the search bar to search for notes
+  * Hosted on Heroku
+  * New Account Creation, Login, Demo Login
+    * Users can sign up, sign in, and log out
+    * Users can use demo button to login to see all the features
+  * Books
+    * Users can create, edit, and delete books
+  * Notes
+    * Users can create, edit, and delete notes
+  * Search
+    * Users can use the search bar to search for notes
 
 * Instructions
-
   * Git clone https://github.com/andrwtran/duly-noted.git
   * Run npm install
   * Install postgres
@@ -40,7 +38,6 @@ Duly Noted is a note-taking app.
   * Use demo login or create own user
 
 * Dependencies
-
   * "js-cookie": "^3.0.1",
   * "react": "^17.0.2",
   * "react-dom": "^17.0.2",

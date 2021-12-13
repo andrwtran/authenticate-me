@@ -28,15 +28,6 @@ export const getAllTags = () => async (dispatch) => {
   return tags;
 };
 
-export const getTagsByNoteId = (noteId) => async (dispatch) => {
-  const response = await fetch(`/api/tags/notes/${noteId}`);
-  if (response.ok) {
-    const tags = await response.json();
-    // dispatch(load(tags));
-    return tags;
-  }
-};
-
 export const createTag = (newTag) => async (dispatch) => {
   const response = await csrfFetch(`/api/tags`, {
     method: 'post',

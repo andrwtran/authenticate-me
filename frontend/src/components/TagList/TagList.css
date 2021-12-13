@@ -1,8 +1,8 @@
-.tagList {
-  display: flex;
-  flex-direction: column;
+.taglist {
+  position: relative;
+  bottom: 15px;
 }
 
-.tagList li {
+.taglist li {
   padding: 5px;
 }

@@ -36,24 +36,6 @@ router.get('/:tagId', requireAuth, asyncHandler(async function (req, res) {
   return res.json(notes);
 }))
 
-// GET ALL TAGS OF A NOTE
-
-router.get('/notes/:noteId', requireAuth, asyncHandler(async function (req, res) {
-  const noteId = parseInt(req.params.noteId, 10);
-  const tags = await Tag.findAll({
-    include: [
-      {
-        model: Note,
-        where: { id: noteId },
-        through: [{
-          model: TaggedNote
-        }]
-      },
-    ]
-  });
-  return res.json(tags);
-}))
-
 // ADD A NEW TAG
 
 router.post('/', requireAuth, asyncHandler(async function(req, res) {

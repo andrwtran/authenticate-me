@@ -18,10 +18,13 @@ textarea {
 
 .noteForm > div {
   display: flex;
+  justify-content: space-between;
+  max-height: 50px;
 }
 
 .taglist ul {
   display: flex;
   flex-direction: row;
   color: white;
+  align-items: flex-start;
 }

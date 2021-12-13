@@ -13,7 +13,6 @@ import './TagList.css';
 function TagList() {
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log(location);
 
   const tagsObj = useSelector((state) => state.tag.entries);
   const tags = Object.values(tagsObj);

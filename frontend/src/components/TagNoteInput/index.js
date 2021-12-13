@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getAllTags } from '../../store/tag';
 import { createTaggedNote } from '../../store/taggedNote';
 import './TagNoteInput.css';
 
 function TagNoteInput({ nonMatchingTags, noteId }) {
   const dispatch = useDispatch();
-
-  // const tagsObj = useSelector((state) => state.tag.entries);
-  // const tags = Object.values(tagsObj);
 
   const [tagId, setTagId] = useState('');
 

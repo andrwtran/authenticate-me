@@ -3,8 +3,7 @@
 Duly Noted is a note-taking app.
 
 * Technologies Used
-
-* Javascript
+  * Javascript
   * CSS
   * HTML
   * Express

@@ -4,6 +4,7 @@ import { updateNote } from '../../store/note';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import DeleteNoteButton from "../DeleteNoteButton";
+import NoteTagsList from "../NoteTagsList";
 import './EditNoteInput.css';
 
 function EditNoteInput({ setShowAddNoteForm }) {
@@ -20,7 +21,7 @@ function EditNoteInput({ setShowAddNoteForm }) {
 
   useEffect(() =>{
     setShowAddNoteForm(false);
-  });
+  }, [dispatch]);
 
   useEffect(() => {
     setName(note.note_name);
@@ -58,6 +59,7 @@ function EditNoteInput({ setShowAddNoteForm }) {
           placeholder="New Note"
           name="name"
           />
+          <NoteTagsList noteId={noteId}/>
         </div>
         <div>
           <textarea

@@ -21,8 +21,13 @@ Duly Noted is a note-taking app.
     * Users can create, edit, and delete books
   * Notes
     * Users can create, edit, and delete notes
+    * Users can browse notes by book
   * Search
-    * Users can use the search bar to search for notes
+    * Users can search for notes
+  * Tags
+    * Users can create and delete tags
+    * Users can add tags to and remove tags from notes
+    * Users can browse notes by tag
 
 * Instructions
   * Git clone https://github.com/andrwtran/duly-noted.git

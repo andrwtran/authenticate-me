@@ -21,13 +21,6 @@ const update = (note) => {
   return { type: UPDATE_NOTE, note};
 };
 
-export const getNotes = (bookId) => async (dispatch) => {
-  const response = await fetch(`/api/books/${bookId}`);
-  const notes = await response.json();
-  dispatch(load(notes));
-  return notes;
-};
-
 export const getAllNotes = () => async (dispatch) => {
   const response = await fetch('/api/notes');
   const notes = await response.json();

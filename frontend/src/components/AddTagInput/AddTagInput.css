@@ -1,0 +1,12 @@
+.addTagInputBox {
+  display: flex;
+  justify-content: center;
+}
+
+.addTagInputBox > form {
+  border: none;
+}
+
+.addTagInputBox input {
+  max-width: 90px;
+}

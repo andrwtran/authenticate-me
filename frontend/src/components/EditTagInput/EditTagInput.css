@@ -1,0 +1,12 @@
+.editTagInputBox {
+  display: flex;
+  justify-content: center;
+}
+
+.editTagInputBox > form {
+  border: none;
+}
+
+.editTagInputBox input {
+  max-width: 90px;
+}

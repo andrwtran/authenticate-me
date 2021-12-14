@@ -1,0 +1,8 @@
+.taglist {
+  position: relative;
+  bottom: 15px;
+}
+
+.taglist li {
+  padding: 5px;
+}

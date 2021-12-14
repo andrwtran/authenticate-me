@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getNotes } from '../../store/note';
+import { getAllNotes } from "../../store/note";
 import { useParams, NavLink } from 'react-router-dom';
 import { Route } from "react-router-dom";
 import EditNoteInput from "../EditNoteInput";
@@ -15,9 +15,10 @@ function NoteList({ setShowAddNoteForm }) {
 
   const notesObj = useSelector((state) => state.note.entries);
   const notes = Object.values(notesObj);
+  const bookNotes = notes.filter((note) => note.bookId === +bookId);
 
   useEffect(() => {
-    dispatch(getNotes(bookId));
+    dispatch(getAllNotes());
   }, [dispatch, bookId, booksObj]);
 
   const linkStyle = {
@@ -37,7 +38,7 @@ function NoteList({ setShowAddNoteForm }) {
   return (
     <div className="noteList">
       <ul>
-        {notes.map(({ id, bookId, note_name }) => (
+        {bookNotes.length > 0 && bookNotes.map(({ id, bookId, note_name }) => (
           <li key={id}>
             <span style={iconStyle}>
               <i className="fas fa-sticky-note" />
@@ -49,6 +50,7 @@ function NoteList({ setShowAddNoteForm }) {
             >{note_name}</NavLink>
           </li>
         ))}
+        {bookNotes.length === 0 && <p style={{ color: 'white' }}>No notes in this book</p>}
       </ul>
       <Route path='/books/:bookId/notes/:noteId'>
           <EditNoteInput setShowAddNoteForm={setShowAddNoteForm}/>

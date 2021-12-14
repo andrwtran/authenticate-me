@@ -9,6 +9,8 @@ import AddNoteInput from "../AddNoteInput";
 import NoteList from "../NoteList";
 import DeleteBookButton from "../DeleteBookButton";
 import SearchBox from "../SearchBox";
+import TagList from "../TagList";
+import TagNoteList from "../TagNoteList";
 import './BookShelf.css';
 
 function BookShelf() {
@@ -104,10 +106,11 @@ function BookShelf() {
           {showAddNoteForm && <AddNoteInput setShowAddNoteForm={setShowAddNoteForm} />}
           <NoteList setShowAddNoteForm={setShowAddNoteForm} />
         </Route>
-        {/* <h2>TAGS</h2>
-        <ul>
-          <li>TO-DO</li>
-        </ul> */}
+        <Route path ={'/tags/:tagId'}>
+          <TagNoteList />
+        </Route>
+        <h2>TAGS</h2>
+          <TagList />
       </div>
     )
   }

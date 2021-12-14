@@ -14,6 +14,7 @@ Duly Noted is a note-taking app.
 
 * MVP
   * Hosted on Heroku
+   * https://duly-noted-sp.herokuapp.com/
   * New Account Creation, Login, Demo Login
     * Users can sign up, sign in, and log out
     * Users can use demo button to login to see all the features

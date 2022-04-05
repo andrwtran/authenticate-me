@@ -36,8 +36,4 @@ Welcome to Cheddar, a simple note-taking app inspired by Remember The Milk. Take
  Users can create tags and add tags to notes. Users can also browse notes by tag.
 
 ## Useful Links
--- [Database Diagram](https://github.com/andrwtran/cheddar/wiki/Database-Schema)
-
--- [MVP List](https://github.com/andrwtran/cheddar/wiki/MVP)
-
--- [User Stories](https://github.com/andrwtran/cheddar/wiki/User-Stories)
+-- [Wiki](https://github.com/andrwtran/duly-noted/wiki)

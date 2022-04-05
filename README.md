@@ -3,7 +3,7 @@
 Welcome to Cheddar, a simple note-taking app inspired by Remember The Milk. Take notes, tag notes, search notes -- all in an easy, intuitive user interface.
 
 ## Live-link :
-   [Cheddar](https://duly-noted-sp.herokuapp.com/)
+   [Duly Noted](https://duly-noted-sp.herokuapp.com/)
 
 ## Frontend Technologies Used
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)

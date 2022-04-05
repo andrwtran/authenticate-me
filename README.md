@@ -1,6 +1,6 @@
 # Welcome to Duly Noted
 
-Welcome to Cheddar, a simple note-taking app inspired by Remember The Milk. Take notes, tag notes, search notes -- all in an easy, intuitive user interface.
+Welcome to Duly Noted, a simple note-taking app inspired by Remember The Milk. Take notes, tag notes, search notes -- all in an easy, intuitive user interface.
 
 ## Live-link :
    [Duly Noted](https://duly-noted-sp.herokuapp.com/)

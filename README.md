@@ -1,69 +1,43 @@
-# Duly_Noted
+# Welcome to Duly Noted
 
-Duly Noted is a note-taking app.
+Welcome to Cheddar, a simple note-taking app inspired by Remember The Milk. Take notes, tag notes, search notes -- all in an easy, intuitive user interface.
 
-* Technologies Used
-  * Javascript
-  * CSS
-  * HTML
-  * Express
-  * Postgres
-  * Sequelize
-  * React
+## Live-link :
+   [Cheddar](https://duly-noted-sp.herokuapp.com/)
 
-* MVP
-  * Hosted on Heroku
-    * https://duly-noted-sp.herokuapp.com/
-  * New Account Creation, Login, Demo Login
-    * Users can sign up, sign in, and log out
-    * Users can use demo button to login to see all the features
-  * Books
-    * Users can create, edit, and delete books
-  * Notes
-    * Users can create, edit, and delete notes
-    * Users can browse notes by book
-  * Search
-    * Users can search for notes
-  * Tags
-    * Users can create and delete tags
-    * Users can add tags to and remove tags from notes
-    * Users can browse notes by tag
+## Frontend Technologies Used
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-* Instructions
-  * Git clone https://github.com/andrwtran/duly-noted.git
-  * Run npm install
-  * Install postgres
-  * Create a new user in postgres (credentials in env.example)
-  * Create a .env file (copy env.example)
-  * Run npx dotenv sequelize db:create
-  * Run npx dotenv sequelize db:migrate
-  * Run npx dotenv sequelize db:seed:all
-  * Change directory to /frontend and run npm start
-  * Change directory to /backend and run npm start
-  * Use demo login or create own user
+## Backend Technologies Used
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SA-SQLAlchemy-red)
 
-* Dependencies
-  * "js-cookie": "^3.0.1",
-  * "react": "^17.0.2",
-  * "react-dom": "^17.0.2",
-  * "react-redux": "^7.2.6",
-  * "react-router-dom": "^5.3.0",
-  * "react-scripts": "4.0.3",
-  * "redux": "^4.1.2",
-  * "redux-thunk": "^2.4.1"
-  * "bcryptjs": "^2.4.3",
-  * "cookie-parser": "^1.4.6",
-  * "cors": "^2.8.5",
-  * "csurf": "^1.11.0",
-  * "dotenv": "^10.0.0",
-  * "express": "^4.17.1",
-  * "express-async-handler": "^1.2.0",
-  * "express-validator": "^6.13.0",
-  * "faker": "^5.5.3",
-  * "helmet": "^4.6.0",
-  * "jsonwebtoken": "^8.5.1",
-  * "morgan": "^1.10.0",
-  * "per-env": "^1.0.2",
-  * "pg": "^8.7.1",
-  * "sequelize": "^5.22.4",
-  * "sequelize-cli": "^5.5.1"
+## Home Page
+
+![Screenshot (677)](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/ba/1323615/b94ff1ac2f1d2bc51d87c4f961f89c96-original.png)
+
+## Features
+
+#### 1. Books
+ Users can save Notes in collections called Books. Users can create, edit, and delete Books.
+
+#### 2. Notes
+ Users can create, edit, and delete notes. Users can also browse notes by book.
+
+#### 3. Search
+ Users can search for notes.
+
+#### 4. Tags
+ Users can create tags and add tags to notes. Users can also browse notes by tag.
+
+## Useful Links
+-- [Database Diagram](https://github.com/andrwtran/cheddar/wiki/Database-Schema)
+
+-- [MVP List](https://github.com/andrwtran/cheddar/wiki/MVP)
+
+-- [User Stories](https://github.com/andrwtran/cheddar/wiki/User-Stories)
